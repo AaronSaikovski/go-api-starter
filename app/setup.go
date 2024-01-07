@@ -6,6 +6,7 @@ import (
 	"github.com/AaronSaikovski/go-api-starter/config"
 	"github.com/AaronSaikovski/go-api-starter/router"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
@@ -17,15 +18,6 @@ func SetupAndRunApp() error {
 		return err
 	}
 
-	// start database
-	// err = database.StartMongoDB()
-	// if err != nil {
-	// 	return err
-	// }
-
-	// defer closing database
-	// defer database.CloseMongoDB()
-
 	// create app
 	app := fiber.New()
 
@@ -33,6 +25,12 @@ func SetupAndRunApp() error {
 	app.Use(recover.New())
 	app.Use(logger.New(logger.Config{
 		Format: "[${ip}]:${port} ${status} - ${method} ${path} ${latency}\n",
+	}))
+
+	//Use CORS - change AllowOrigins to suit
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
 	// setup routes
