@@ -17,10 +17,6 @@ localrelease: vet lint seccheck
 docs:
 	swag init --dir ./handlers
 
-## dev - enables hot reload of the api
-dev:
-	air
-	
 ## debug - Builds the project in preparation for debug
 build:
 	go build -o bin/${TARGET} ${MAINAPPPATH}

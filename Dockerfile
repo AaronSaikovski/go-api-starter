@@ -1,16 +1,19 @@
-#FROM golang:1.21-alpine
-FROM golang:1.21
+# Stage 1: Build the Go application
+FROM golang:1.21-alpine AS build
 WORKDIR /app
-
-COPY go.mod go.sum ./
-
-RUN go mod download
-RUN go mod verify
-
 COPY . .
-
+RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o server .
 
-EXPOSE 8080
 
+# Stage 2: Create a minimal image to run the application - minimal
+FROM alpine:latest
+WORKDIR /root/
+
+#copy files
+COPY --from=build /app/server .
+COPY --from=build /app/.env .
+
+
+# set executable
 CMD ["./server"]

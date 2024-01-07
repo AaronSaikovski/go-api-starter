@@ -5,10 +5,10 @@ import (
 	_ "github.com/AaronSaikovski/go-api-starter/docs"
 )
 
-// @title The Better Backend Template
+// @title go-api-starter
 // @version 0.1
-// @description An example template of a Golang backend API using Fiber and MongoDB
-// @contact.name Ben Davis
+// @description An example template of a Golang simple backend API using Fiber
+// @contact.name Aaron Saikovski
 // @license.name MIT
 // @host localhost:8080
 // @BasePath /
