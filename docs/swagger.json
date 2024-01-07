@@ -14,7 +14,7 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
-        "/health": {
+        "/ping": {
             "get": {
                 "description": "get the status of server.",
                 "consumes": [
@@ -26,7 +26,7 @@
                 "tags": [
                     "health"
                 ],
-                "summary": "Show the status of server.",
+                "summary": "Show the status of server - Ping/Pong",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -34,236 +34,23 @@
                 }
             }
         },
-        "/todos": {
+        "/weatherforecast": {
             "get": {
-                "description": "fetch every todo available.",
+                "description": "Sample random weatherforecast data",
                 "consumes": [
                     "*/*"
                 ],
                 "produces": [
-                    "application/json"
+                    "text/plain"
                 ],
                 "tags": [
-                    "todos"
+                    "weather"
                 ],
-                "summary": "Get all todos.",
+                "summary": "Sample weatherforecast",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.Todo"
-                            }
-                        }
+                        "description": "OK"
                     }
-                }
-            },
-            "post": {
-                "description": "create a single todo.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "todos"
-                ],
-                "summary": "Create a todo.",
-                "parameters": [
-                    {
-                        "description": "Todo to create",
-                        "name": "todo",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/handlers.CreateTodoDTO"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.CreateTodoResDTO"
-                        }
-                    }
-                }
-            }
-        },
-        "/todos/:id": {
-            "get": {
-                "description": "fetch a single todo.",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "todos"
-                ],
-                "summary": "Get a single todo.",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Todo ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.Todo"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "update a single todo.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "todos"
-                ],
-                "summary": "Update a todo.",
-                "parameters": [
-                    {
-                        "description": "Todo update data",
-                        "name": "todo",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/handlers.UpdateTodoDTO"
-                        }
-                    },
-                    {
-                        "type": "string",
-                        "description": "Todo ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.UpdateTodoResDTO"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "delete a single todo by id.",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "todos"
-                ],
-                "summary": "Delete a single todo.",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Todo ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.DeleteTodoResDTO"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "handlers.CreateTodoDTO": {
-            "type": "object",
-            "properties": {
-                "completed": {
-                    "type": "boolean"
-                },
-                "date": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                }
-            }
-        },
-        "handlers.CreateTodoResDTO": {
-            "type": "object",
-            "properties": {
-                "inserted_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "handlers.DeleteTodoResDTO": {
-            "type": "object",
-            "properties": {
-                "deleted_count": {
-                    "type": "integer"
-                }
-            }
-        },
-        "handlers.UpdateTodoDTO": {
-            "type": "object",
-            "properties": {
-                "completed": {
-                    "type": "boolean"
-                },
-                "date": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                }
-            }
-        },
-        "handlers.UpdateTodoResDTO": {
-            "type": "object",
-            "properties": {
-                "updated_count": {
-                    "type": "integer"
-                }
-            }
-        },
-        "models.Todo": {
-            "type": "object",
-            "properties": {
-                "completed": {
-                    "type": "boolean"
-                },
-                "date": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
                 }
             }
         }
