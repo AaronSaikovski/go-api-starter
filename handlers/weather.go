@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"errors"
 	"math/rand"
 	"time"
 
@@ -9,55 +8,70 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// Get Rnadom data
-func geRandDate(NumDays int) time.Time {
-	// Get the current date and time
-	currentTime := time.Now()
-
-	// Add days to the current date
-	return currentTime.AddDate(0, 0, NumDays)
-}
-
 // Convert from Celsius to Fahrenheit
 func convertToF(CelsiusValue int) int {
 	return (CelsiusValue * 9 / 5) + 32
 }
 
+// Get a weather summary based on tempC
+func getWeatherSummary(TempC int) string {
+
+	switch {
+	case TempC <= 10:
+		return "Freezing"
+	case TempC > 10 && TempC <= 20:
+		return "Cool"
+	case TempC > 20 && TempC <= 30:
+		return "Moderate"
+	case TempC > 30 && TempC <= 45:
+		return "Moderate"
+	case TempC > 45:
+		return "Extreme"
+	default:
+		return "unknown"
+	}
+}
+
 // Generate random Weatherforecast data
-func generateRandomWeatherData(WeatherData *models.WeatherData) error {
-
-	//check for valid weatherData object
-	if WeatherData == nil {
-		return errors.New("**Error: WeatherData data is empty or invalid..**")
-	}
-
-	// Weather summaries
-	summaries := []string{
-		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching",
-	}
+func generateRandomWeatherData() []models.WeatherData {
 
 	//seed the randomiser
 	rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	//get a random number between 1 & 5
-	randDay := rand.Intn(5) + 1
+	//get todays daye
+	currentTime := time.Now()
 
-	// calc a random temp
-	randTemp := rand.Intn(55) + -22
+	//Create a struct of 5 elements
+	var WeatherData []models.WeatherData
 
-	// Generate a random index within the length of the slice
-	randomIndex := rand.Intn(len(summaries))
+	//main loop for 5 days
+	for i := 0; i < 5; i++ {
 
-	// Get the random value from the slice using the random index
-	randomSummary := summaries[randomIndex]
+		//Set the date
+		CurrentDay := currentTime.AddDate(0, 0, i)
+		formattedDate := CurrentDay.Format("2006-01-02")
 
-	// populate weatherdata struct
-	WeatherData.Date = geRandDate(randDay)
-	WeatherData.TemperatureC = randTemp
-	WeatherData.Summary = randomSummary
-	WeatherData.TemperatureF = convertToF(randTemp)
+		// calc a random temp - TemperatureC
+		RandomTemp := rand.Intn(55) + -22
 
-	return nil
+		// Convert to - TemperatureF
+		TemperatureF := convertToF(RandomTemp)
+
+		//Get summary for temp
+		WeatherSummary := getWeatherSummary(RandomTemp)
+
+		//add items to the struct
+		NewWeatherItem := models.WeatherData{
+			Date:         formattedDate,
+			TemperatureC: RandomTemp,
+			TemperatureF: TemperatureF,
+			Summary:      WeatherSummary,
+		}
+		WeatherData = append(WeatherData, NewWeatherItem)
+
+	}
+
+	return WeatherData
 }
 
 // @Summary Sample weatherforecast
@@ -69,13 +83,8 @@ func generateRandomWeatherData(WeatherData *models.WeatherData) error {
 // @Router /weatherforecast [get]
 func HandleWeatherGet(c *fiber.Ctx) error {
 
-	// get weather data and update pointer to struct
-	WeatherData := new(models.WeatherData)
-	err := generateRandomWeatherData(WeatherData)
-
-	if err != nil {
-		panic(err)
-	}
+	// get weather data and return JSON Object
+	WeatherData := generateRandomWeatherData()
 
 	// return the weather data json
 	return c.Status(200).JSON(WeatherData)
