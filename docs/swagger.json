@@ -1,10 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "An example template of a Golang backend API using Fiber and MongoDB",
-        "title": "The Better Backend Template",
+        "description": "An example template of a Golang simple backend API using Fiber",
+        "title": "go-api-starter",
         "contact": {
-            "name": "Ben Davis"
+            "name": "Aaron Saikovski"
         },
         "license": {
             "name": "MIT"

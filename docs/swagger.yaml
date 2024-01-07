@@ -53,11 +53,11 @@ definitions:
 host: localhost:8080
 info:
   contact:
-    name: Ben Davis
-  description: An example template of a Golang backend API using Fiber and MongoDB
+    name: Aaron Saikovski
+  description: An example template of a Golang simple backend API using Fiber
   license:
     name: MIT
-  title: The Better Backend Template
+  title: go-api-starter
   version: "0.1"
 paths:
   /health:
