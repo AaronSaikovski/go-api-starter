@@ -10,5 +10,5 @@ import "github.com/gofiber/fiber/v2"
 // @Success 200 "OK"
 // @Router /ping [get]
 func HandleHealthCheck(c *fiber.Ctx) error {
-	return c.SendString("Pong")
+	return c.SendString("pong")
 }
