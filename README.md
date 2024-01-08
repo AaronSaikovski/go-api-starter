@@ -1,8 +1,8 @@
 <div align="center">
 
-# GoLang API Starter Template
+# GoLang API Starter Template - v0.1
 
-A simple Golang API project template to save you time and energy.
+A simple Golang API project template to save you time and energy. 
 
 [![Build Status](https://github.com/AaronSaikovski/go-api-starter/workflows/build/badge.svg)](https://github.com/AaronSaikovski/go-api-starter/actions)
 
@@ -48,14 +48,22 @@ View swagger docs at http://localhost:8080/swagger
 
 #### run `make help` for more assistance on the make file.
 
-1. `make build` - To make and build the program using the `Makefile`.
-2. `make run` - To make and run the program using the `Makefile`.
-3. `make test` - To make and run the unit tests using the `Makefile`.
-4. `make clean` - To cleanup and delete all binaries using the `Makefile`.
-5. `make lint` - To lint the code using `golangci-lint` via the `Makefile`.
-6. `make dep` - To download all program dependencies using `Makefile`.
-7. `make depupdate` - Upgrades all dependencies to the latest or minor patch release using `Makefile`.
-8. `make docs` - Updates the swagger documents..
+```
+help          - Display help about make targets for this Makefile
+localrelease  - Builds the project in preparation for (local)release
+docs          - updates the swagger docs
+debug         - Builds the project in preparation for debug
+buildandrun   - builds and runs the program on the target platform
+run           - runs main.go for testing
+clean         - Remove the old builds and any debug information
+unittest      - executes unit tests
+dep           - fetches any external dependencies
+vet           - Vet examines Go source code and reports suspicious constructs
+staticcheck   - Runs static code analyzer staticcheck - currently broken
+seccheck      - Code vulnerability check
+lint          - format code and tidy modules
+depupdate     - Update dependencies
+```
 
 ### Docker Support
 
@@ -84,6 +92,10 @@ and to tear it down type:
 ```
 docker compose down
 ```
+
+
+### Issues
+Please report any issues [here](https://github.com/AaronSaikovski/go-api-starter/issues).
 
 ## References
 
