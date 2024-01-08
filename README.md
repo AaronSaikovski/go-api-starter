@@ -1,8 +1,8 @@
 <div align="center">
 
-# GoLang API Starter Template - v0.1
+# GoLang API Starter Template - v0.2
 
-A simple Golang API project template to save you time and energy. 
+A simple Golang API project template to save you time and energy.
 
 [![Build Status](https://github.com/AaronSaikovski/go-api-starter/workflows/build/badge.svg)](https://github.com/AaronSaikovski/go-api-starter/actions)
 
@@ -18,6 +18,7 @@ A simple GoLang WebAPI boilerplate project to accelerate Golang projects. Origin
 - CI (Github Actions)
 - Unit tests (coming soon)
 - Container support with [docker](Dockerfile) and [docker-compose](docker-compose.yml)
+- API key validation - https://docs.gofiber.io/api/middleware/keyauth/
 
 ## Install
 
@@ -93,8 +94,8 @@ and to tear it down type:
 docker compose down
 ```
 
-
 ### Issues
+
 Please report any issues [here](https://github.com/AaronSaikovski/go-api-starter/issues).
 
 ## References
