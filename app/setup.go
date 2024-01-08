@@ -40,6 +40,7 @@ func setupLogging() error {
 
 // Setup and run
 func SetupAndRunApp() error {
+	
 	// load env
 	errEnv := config.LoadENV()
 	if errEnv != nil {
