@@ -6,6 +6,7 @@ import (
 
 	"github.com/AaronSaikovski/go-api-starter/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/rs/zerolog/log"
 )
 
 // Convert from Celsius to Fahrenheit
@@ -82,6 +83,8 @@ func generateRandomWeatherData() []models.WeatherData {
 // @Success 200 "OK"
 // @Router /weatherforecast [get]
 func HandleWeatherGet(c *fiber.Ctx) error {
+
+	log.Debug().Msg("Calling HandleWeatherGet()")
 
 	// get weather data and return JSON Object
 	WeatherData := generateRandomWeatherData()

@@ -13,6 +13,7 @@ import (
 // @host localhost:8080
 // @BasePath /
 func main() {
+
 	// setup and run app
 	err := app.SetupAndRunApp()
 	if err != nil {
