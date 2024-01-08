@@ -1,12 +1,12 @@
 package middleware
 
 import (
-	"errors"
-	"os"
 	"crypto/sha256"
 	"crypto/subtle"
+	"errors"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/keyauth"
+	"os"
 )
 
 // Validate with API key
@@ -17,7 +17,7 @@ func ValidateAPIKey(c *fiber.Ctx, key string) (bool, error) {
 
 	//return if API is empty
 	if apiKey == "" {
-		return false, errors.New("APIKEY is empty!")
+		return false, errors.New("APIKEY is empty")
 	}
 
 	hashedAPIKey := sha256.Sum256([]byte(apiKey))
