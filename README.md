@@ -79,7 +79,7 @@ docker build -t golangapi:1.0.0 .
 and to run the comtainer type:
 
 ```
-docker run -p 8080:8080 golangapigolangapi:1.0.0
+docker run -p 8080:8080 golangapi:1.0.0
 ```
 
 or you can streamline the container build and run process by typing:
