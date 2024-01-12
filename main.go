@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/AaronSaikovski/go-api-starter/app"
+	"github.com/AaronSaikovski/go-api-starter/api"
 	_ "github.com/AaronSaikovski/go-api-starter/docs"
 )
 
 // @title go-api-starter
-// @version 0.2.0
+// @version 0.2.1
 // @description An example template of a Golang simple backend API using Fiber
 // @contact.name Aaron Saikovski
 // @license.name MIT
@@ -15,7 +15,7 @@ import (
 func main() {
 
 	// setup and run app
-	err := app.SetupAndRunApp()
+	err := api.SetupAndRunApp()
 	if err != nil {
 		panic(err)
 	}

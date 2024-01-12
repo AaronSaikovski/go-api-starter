@@ -11,7 +11,9 @@ require (
 
 require (
 	github.com/google/uuid v1.5.0 // indirect
+	github.com/philhofer/fwd v1.1.2 // indirect
 	github.com/swaggo/files/v2 v2.0.0 // indirect
+	github.com/tinylib/msgp v1.1.8 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
