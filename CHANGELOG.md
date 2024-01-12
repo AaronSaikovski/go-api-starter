@@ -1,6 +1,6 @@
 # GO-API-STARTER - CHANGELOG
 
-## v0.2.0 (2024-01-12)
+## v0.2.1 (2024-01-12)
 
 - added endpoint healthchecks
 - refactored to a more 'clean' architecture
