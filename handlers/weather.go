@@ -81,7 +81,7 @@ func generateRandomWeatherData() []models.WeatherData {
 // @Accept */*
 // @Produce plain
 // @Success 200 "OK"
-// @Router /weatherforecast [get]
+// @Router /api/weatherforecast [get]
 func HandleWeatherGet(c *fiber.Ctx) error {
 
 	log.Debug().Msg("Calling HandleWeatherGet()")

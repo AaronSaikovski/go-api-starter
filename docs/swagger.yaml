@@ -9,7 +9,7 @@ info:
   title: go-api-starter
   version: "0.1"
 paths:
-  /ping:
+  /api/ping:
     get:
       consumes:
       - '*/*'
@@ -21,8 +21,8 @@ paths:
           description: OK
       summary: Show the status of server - Ping/Pong
       tags:
-      - health
-  /weatherforecast:
+      - ping
+  /api/weatherforecast:
     get:
       consumes:
       - '*/*'

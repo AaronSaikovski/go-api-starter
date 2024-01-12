@@ -6,6 +6,6 @@ import (
 )
 
 func SetupRoutes(app *fiber.App) {
-	app.Get("/ping", handlers.HandleHealthCheck)
-	app.Get("/weatherforecast", handlers.HandleWeatherGet)
+	app.Get("/api/ping", handlers.HandlePingCheck)
+	app.Get("/api/weatherforecast", handlers.HandleWeatherGet)
 }

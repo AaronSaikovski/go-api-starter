@@ -4,9 +4,10 @@ import (
 	"crypto/sha256"
 	"crypto/subtle"
 	"errors"
+	"os"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/keyauth"
-	"os"
 )
 
 // Validate with API key

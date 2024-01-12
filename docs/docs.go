@@ -20,7 +20,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/ping": {
+        "/api/ping": {
             "get": {
                 "description": "get the status of server.",
                 "consumes": [
@@ -30,7 +30,7 @@ const docTemplate = `{
                     "text/plain"
                 ],
                 "tags": [
-                    "health"
+                    "ping"
                 ],
                 "summary": "Show the status of server - Ping/Pong",
                 "responses": {
@@ -40,7 +40,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/weatherforecast": {
+        "/api/weatherforecast": {
             "get": {
                 "description": "Sample random weatherforecast data",
                 "consumes": [

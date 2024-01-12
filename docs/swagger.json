@@ -14,7 +14,7 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
-        "/ping": {
+        "/api/ping": {
             "get": {
                 "description": "get the status of server.",
                 "consumes": [
@@ -24,7 +24,7 @@
                     "text/plain"
                 ],
                 "tags": [
-                    "health"
+                    "ping"
                 ],
                 "summary": "Show the status of server - Ping/Pong",
                 "responses": {
@@ -34,7 +34,7 @@
                 }
             }
         },
-        "/weatherforecast": {
+        "/api/weatherforecast": {
             "get": {
                 "description": "Sample random weatherforecast data",
                 "consumes": [

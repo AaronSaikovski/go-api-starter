@@ -1,6 +1,6 @@
 <div align="center">
 
-# GoLang API Starter Template - v0.2
+# GoLang API Starter Template - v0.2.1
 
 A simple Golang API project template to save you time and energy.
 
@@ -65,6 +65,23 @@ seccheck      - Code vulnerability check
 lint          - format code and tidy modules
 depupdate     - Update dependencies
 ```
+
+### Healthchecks
+
+Using the built-in Fiber middleware healthcheck readiness and liveness probe - more details [here](https://docs.gofiber.io/api/middleware/healthcheck).
+Uses the default probe endpoint:
+
+```
+http://127.0.0.1:8080/livez
+```
+
+Returns:
+
+```
+200 OK:
+```
+
+When the checker function evaluates to true.
 
 ### Docker Support
 
