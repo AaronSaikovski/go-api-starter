@@ -2,10 +2,11 @@ package handlers
 
 import (
 	"math/rand"
+	"net/http"
 	"time"
 
 	"github.com/AaronSaikovski/go-api-starter/models"
-	"github.com/gofiber/fiber/v2"
+	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
 )
 
@@ -75,6 +76,25 @@ func generateRandomWeatherData() []models.WeatherData {
 	return WeatherData
 }
 
+// // @Summary Sample weatherforecast
+// // @Description Sample random weatherforecast data
+// // @Tags weather
+// // @Accept */*
+// // @Produce plain
+// // @Success 200 "OK"
+// // @Router /api/weatherforecast [get]
+// func HandleWeatherGet(c *fiber.Ctx) error {
+
+// 	log.Debug().Msg("Calling HandleWeatherGet()")
+
+// 	// get weather data and return JSON Object
+// 	WeatherData := generateRandomWeatherData()
+
+// 	// return the weather data json
+// 	return c.Status(200).JSON(WeatherData)
+
+// }
+
 // @Summary Sample weatherforecast
 // @Description Sample random weatherforecast data
 // @Tags weather
@@ -82,7 +102,7 @@ func generateRandomWeatherData() []models.WeatherData {
 // @Produce plain
 // @Success 200 "OK"
 // @Router /api/weatherforecast [get]
-func HandleWeatherGet(c *fiber.Ctx) error {
+func HandleWeatherGet(c echo.Context) error {
 
 	log.Debug().Msg("Calling HandleWeatherGet()")
 
@@ -90,6 +110,6 @@ func HandleWeatherGet(c *fiber.Ctx) error {
 	WeatherData := generateRandomWeatherData()
 
 	// return the weather data json
-	return c.Status(200).JSON(WeatherData)
+	return c.JSON(http.StatusOK, WeatherData)
 
 }
