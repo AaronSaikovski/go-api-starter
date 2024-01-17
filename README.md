@@ -18,6 +18,7 @@ A simple GoLang WebAPI boilerplate project to accelerate Golang projects. Origin
 - CI (Github Actions)
 - Unit tests (coming soon)
 - Container support with [docker](Dockerfile) and [docker-compose](docker-compose.yml)
+- 
 - API key validation - https://docs.gofiber.io/api/middleware/keyauth/
 
 ## Install

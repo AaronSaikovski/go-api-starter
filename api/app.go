@@ -32,7 +32,7 @@ func SetupAndRunApp() error {
 	app := echo.New()
 
 	// Uses API key header - 'XApiKey'
-	//middleware.AddApiKeyAuth(app)
+	middleware.AddApiKeyAuth(app)
 
 	// attach middleware
 	middleware.Recover(app)
