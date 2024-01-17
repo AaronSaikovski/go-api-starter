@@ -2,7 +2,7 @@
 
 # GoLang API Starter Template - v0.3.1
 
-A simple Golang API project template to save you time and energy.
+A simple Golang API project template that uses the Echo Web framework to save you time and energy.
 
 [![Build Status](https://github.com/AaronSaikovski/go-api-starter/workflows/build/badge.svg)](https://github.com/AaronSaikovski/go-api-starter/actions)
 
@@ -12,13 +12,18 @@ A simple GoLang WebAPI boilerplate project to accelerate Golang projects. Origin
 
 ## This project contains:
 
-- Echo Web framework - https://echo.labstack.com/ & docs: docs here: https://echo.labstack.com/docs/
+- Echo Web framework - https://echo.labstack.com/
 - Zerolog - https://github.com/rs/zerolog
 - Swaggo - https://github.com/swaggo/swag
 - CI (Github Actions)
 - Unit tests (coming soon)
 - Container support with [docker](Dockerfile) and [docker-compose](docker-compose.yml)
-- API key validation - https://docs.gofiber.io/api/middleware/keyauth/
+- API key validation - https://echo.labstack.com/docs/middleware/key-auth
+- Compression - https://echo.labstack.com/docs/middleware/gzip
+- Rate limiting - https://echo.labstack.com/docs/middleware/rate-limiter
+- Auto Recovery - https://echo.labstack.com/docs/middleware/recover
+- Logging - https://echo.labstack.com/docs/middleware/logger
+- CORS Support - https://echo.labstack.com/docs/middleware/cors
 
 ## Install
 
@@ -64,24 +69,25 @@ staticcheck   - Runs static code analyzer staticcheck - currently broken
 seccheck      - Code vulnerability check
 lint          - format code and tidy modules
 depupdate     - Update dependencies
+hotload       - Uses the Air server for hot reloading support.
 ```
 
-### Healthchecks
+### Basic Ping Healthchecks
 
-Using the built-in Fiber middleware healthcheck readiness and liveness probe - more details [here](https://docs.gofiber.io/api/middleware/healthcheck).
-Uses the default probe endpoint:
-
+Uses a basic Ping/Pong approach for healthchecks.
+Uses the endpoint:
 ```
-http://127.0.0.1:8080/livez
+http://127.0.0.1:8080/api/ping
 ```
 
 Returns:
 
 ```
-200 OK:
+pong -
+HTTP Status code - 200 OK:
 ```
 
-When the checker function evaluates to true.
+If the API is running/healthy.
 
 ### Docker Support
 
