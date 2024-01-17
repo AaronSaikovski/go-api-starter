@@ -65,12 +65,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.2.1",
+	Version:          "0.3.1",
 	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "go-api-starter",
-	Description:      "An example template of a Golang simple backend API using Fiber",
+	Description:      "An example template of a Golang simple backend API using Echo",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",
