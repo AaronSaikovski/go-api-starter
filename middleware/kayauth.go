@@ -23,7 +23,7 @@ func AddApiKeyAuth(app *echo.Echo) {
 			if subtle.ConstantTimeCompare(hashedAPIKey[:], hashedKey[:]) == 1 {
 				return true, nil
 			}
-			return false, errors.New("apikey is missing or invalid.")
+			return false, errors.New("apikey is missing or invalid")
 		},
 	}))
 }
