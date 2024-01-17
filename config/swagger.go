@@ -6,7 +6,7 @@ import (
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
+// Setup swagger
 func AddSwaggerRoutes(app *echo.Echo) {
-	// setup swagger
 	app.GET("/swagger/*", echoSwagger.WrapHandler)
 }

@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "An example template of a Golang simple backend API using Fiber",
+        "description": "An example template of a Golang simple backend API using Echo",
         "title": "go-api-starter",
         "contact": {
             "name": "Aaron Saikovski"
@@ -9,7 +9,7 @@
         "license": {
             "name": "MIT"
         },
-        "version": "0.2.1"
+        "version": "0.3.1"
     },
     "host": "localhost:8080",
     "basePath": "/",

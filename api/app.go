@@ -32,7 +32,10 @@ func SetupAndRunApp() error {
 	app := echo.New()
 
 	// Uses API key header - 'XApiKey'
-	middleware.AddApiKeyAuth(app)
+	//middleware.AddApiKeyAuth(app)
+
+	// attach swagger
+	config.AddSwaggerRoutes(app)
 
 	// attach middleware
 	middleware.Recover(app)
@@ -44,14 +47,11 @@ func SetupAndRunApp() error {
 	// setup routes
 	router.SetupRoutes(app)
 
-	// attach swagger
-	config.AddSwaggerRoutes(app)
-
 	//Add a rate limiter
-	//middleware.RateLimiter(app)
+	middleware.RateLimiter(app)
 
 	//Add compression
-	//middleware.AddCompression(app)
+	middleware.AddCompression(app)
 
 	// get the port and start
 	port := os.Getenv("PORT")
