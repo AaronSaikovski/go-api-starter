@@ -1,13 +1,12 @@
 package config
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/swagger"
-
 	_ "github.com/AaronSaikovski/go-api-starter/docs"
+	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
-func AddSwaggerRoutes(app *fiber.App) {
+func AddSwaggerRoutes(app *echo.Echo) {
 	// setup swagger
-	app.Get("/swagger/*", swagger.HandlerDefault)
+	app.GET("/swagger/*", echoSwagger.WrapHandler)
 }

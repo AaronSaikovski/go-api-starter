@@ -1,6 +1,6 @@
 <div align="center">
 
-# GoLang API Starter Template - v0.2.1
+# GoLang API Starter Template - v0.3.1
 
 A simple Golang API project template to save you time and energy.
 
@@ -12,12 +12,13 @@ A simple GoLang WebAPI boilerplate project to accelerate Golang projects. Origin
 
 ## This project contains:
 
-- Fiber Web framework - https://github.com/gofiber/fiber
+- Echo Web framework - https://echo.labstack.com/
 - Zerolog - https://github.com/rs/zerolog
 - Swaggo - https://github.com/swaggo/swag
 - CI (Github Actions)
 - Unit tests (coming soon)
 - Container support with [docker](Dockerfile) and [docker-compose](docker-compose.yml)
+- 
 - API key validation - https://docs.gofiber.io/api/middleware/keyauth/
 
 ## Install

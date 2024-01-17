@@ -1,14 +1,14 @@
 package middleware
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
-// Attach CORS to API
-func AddCors(app *fiber.App) {
-	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*",
-		AllowHeaders: "Origin, Content-Type, Accept",
+// Attach CORS to API https://echo.labstack.com/docs/middleware/cors
+func AddCors(app *echo.Echo) {
+	app.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*", "https://labstack.net"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 }

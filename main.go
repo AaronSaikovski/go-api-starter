@@ -6,8 +6,8 @@ import (
 )
 
 // @title go-api-starter
-// @version 0.2.1
-// @description An example template of a Golang simple backend API using Fiber
+// @version 0.3.1
+// @description An example template of a Golang simple backend API using Echo
 // @contact.name Aaron Saikovski
 // @license.name MIT
 // @host localhost:8080

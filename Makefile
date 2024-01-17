@@ -15,7 +15,7 @@ localrelease: vet lint seccheck
 
 ## docs - updates the swagger docs
 docs:	
-	swag init --dir ./,./handlers
+	swag init --dir ./../handlers
 
 ## debug - Builds the project in preparation for debug
 build:
@@ -51,8 +51,8 @@ vet:
 	go vet ./...
 
 ## staticcheck - Runs static code analyzer staticcheck - currently broken
-# staticcheck: 	
-# 	go run honnef.co/go/tools/cmd/staticcheck@latest ./...
+staticcheck:
+	staticcheck ./...
 
 ## seccheck - Code vulnerability check
 seccheck:	

@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/labstack/echo/v4"
+	"net/http"
 )
 
 // @Summary Show the status of server - Ping/Pong
@@ -11,6 +12,6 @@ import (
 // @Produce plain
 // @Success 200 "OK"
 // @Router /api/ping [get]
-func HandlePingCheck(c *fiber.Ctx) error {
-	return c.SendString("pong")
+func HandlePingCheck(c echo.Context) error {
+	return c.String(http.StatusOK, "pong")
 }

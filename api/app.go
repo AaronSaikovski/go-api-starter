@@ -6,10 +6,8 @@ import (
 	"github.com/AaronSaikovski/go-api-starter/config"
 	"github.com/AaronSaikovski/go-api-starter/middleware"
 	"github.com/AaronSaikovski/go-api-starter/router"
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/healthcheck"
-	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/gofiber/fiber/v2/middleware/recover"
+
+	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
 )
 
@@ -30,17 +28,15 @@ func SetupAndRunApp() error {
 
 	log.Debug().Msg("calling SetupAndRunApp()")
 
-	// create Fiber app
-	app := fiber.New()
+	// create Echo app
+	app := echo.New()
 
 	// Uses API key header - 'XApiKey'
 	middleware.AddApiKeyAuth(app)
 
 	// attach middleware
-	app.Use(recover.New())
-	app.Use(logger.New(logger.Config{
-		Format: "[${ip}]:${port} ${status} - ${method} ${path} ${latency}\n",
-	}))
+	middleware.Recover(app)
+	middleware.Logger(app)
 
 	//Use CORS - change AllowOrigins to suit
 	middleware.AddCors(app)
@@ -52,14 +48,14 @@ func SetupAndRunApp() error {
 	config.AddSwaggerRoutes(app)
 
 	//Add a rate limiter
-	middleware.RateLimiter(app)
+	//middleware.RateLimiter(app)
 
-	// Provide a minimal healthcheck - Default Endpoint: /livez
-	app.Use(healthcheck.New())
+	//Add compression
+	//middleware.AddCompression(app)
 
 	// get the port and start
 	port := os.Getenv("PORT")
-	app.Listen(":" + port)
+	app.Logger.Fatal(app.Start(":" + port))
 
 	return nil
 }

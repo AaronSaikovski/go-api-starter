@@ -1,19 +1,14 @@
 package middleware
 
 import (
-	"time"
-
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/limiter"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
-// Set a Rate limiter with a sliding window  - https://docs.gofiber.io/api/middleware/limiter/
-func RateLimiter(app *fiber.App) {
+// Set a Rate limiter with a sliding window  - https://echo.labstack.com/docs/middleware/rate-limiter
+func RateLimiter(app *echo.Echo) {
 
-	app.Use(limiter.New(limiter.Config{
-		Max:               20,
-		Expiration:        30 * time.Second,
-		LimiterMiddleware: limiter.SlidingWindow{},
-	}))
+	//The example below will limit the application to 50 requests/sec using the default in-memory store:
+	app.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(50)))
 
 }
