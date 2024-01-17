@@ -28,7 +28,7 @@ func SetupAndRunApp() error {
 
 	log.Debug().Msg("calling SetupAndRunApp()")
 
-	// create Echo app
+	// create Echo app -
 	app := echo.New()
 
 	// Uses API key header - 'XApiKey'

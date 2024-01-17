@@ -66,3 +66,7 @@ lint:
 ## depupdate - Update dependencies
 depupdate:
 	go get -u ./...
+
+## hotload - use air server for hot reloading
+hotload:
+	air

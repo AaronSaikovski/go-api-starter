@@ -12,13 +12,12 @@ A simple GoLang WebAPI boilerplate project to accelerate Golang projects. Origin
 
 ## This project contains:
 
-- Echo Web framework - https://echo.labstack.com/
+- Echo Web framework - https://echo.labstack.com/ & docs: docs here: https://echo.labstack.com/docs/
 - Zerolog - https://github.com/rs/zerolog
 - Swaggo - https://github.com/swaggo/swag
 - CI (Github Actions)
 - Unit tests (coming soon)
 - Container support with [docker](Dockerfile) and [docker-compose](docker-compose.yml)
-- 
 - API key validation - https://docs.gofiber.io/api/middleware/keyauth/
 
 ## Install
