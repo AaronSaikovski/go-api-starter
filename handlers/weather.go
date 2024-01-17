@@ -76,25 +76,6 @@ func generateRandomWeatherData() []models.WeatherData {
 	return WeatherData
 }
 
-// // @Summary Sample weatherforecast
-// // @Description Sample random weatherforecast data
-// // @Tags weather
-// // @Accept */*
-// // @Produce plain
-// // @Success 200 "OK"
-// // @Router /api/weatherforecast [get]
-// func HandleWeatherGet(c *fiber.Ctx) error {
-
-// 	log.Debug().Msg("Calling HandleWeatherGet()")
-
-// 	// get weather data and return JSON Object
-// 	WeatherData := generateRandomWeatherData()
-
-// 	// return the weather data json
-// 	return c.Status(200).JSON(WeatherData)
-
-// }
-
 // @Summary Sample weatherforecast
 // @Description Sample random weatherforecast data
 // @Tags weather

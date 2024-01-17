@@ -15,7 +15,7 @@ localrelease: vet lint seccheck
 
 ## docs - updates the swagger docs
 docs:	
-	swag init --dir ./,./handlers
+	swag init --dir ./../handlers
 
 ## debug - Builds the project in preparation for debug
 build:

@@ -32,7 +32,7 @@ func SetupAndRunApp() error {
 	app := echo.New()
 
 	// Uses API key header - 'XApiKey'
-	middleware.AddApiKeyAuth(app)
+	//middleware.AddApiKeyAuth(app)
 
 	// attach middleware
 	middleware.Recover(app)
@@ -45,24 +45,16 @@ func SetupAndRunApp() error {
 	router.SetupRoutes(app)
 
 	// attach swagger
-	//config.AddSwaggerRoutes(app)
+	config.AddSwaggerRoutes(app)
 
 	//Add a rate limiter
-	middleware.RateLimiter(app)
+	//middleware.RateLimiter(app)
 
 	//Add compression
-	middleware.AddCompression(app)
-
-	// Provide a minimal healthcheck - Default Endpoint: /livez
-	//app.Use(healthcheck.New())
-
-	// get the port and start
-	// port := os.Getenv("PORT")
-	// app.Listen(":" + port)
+	//middleware.AddCompression(app)
 
 	// get the port and start
 	port := os.Getenv("PORT")
-
 	app.Logger.Fatal(app.Start(":" + port))
 
 	return nil
