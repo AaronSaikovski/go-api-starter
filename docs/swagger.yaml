@@ -9,7 +9,7 @@ info:
   title: go-api-starter
   version: 0.3.1
 paths:
-  /api/ping:
+  /api/health:
     get:
       consumes:
       - '*/*'
@@ -19,9 +19,9 @@ paths:
       responses:
         "200":
           description: OK
-      summary: Show the status of server - Ping/Pong
+      summary: Show the health status of the API.
       tags:
-      - ping
+      - healthcheck
   /api/weatherforecast:
     get:
       consumes:
@@ -34,5 +34,5 @@ paths:
           description: OK
       summary: Sample weatherforecast
       tags:
-      - weather
+      - sampleweatherdata
 swagger: "2.0"

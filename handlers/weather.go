@@ -78,7 +78,7 @@ func generateRandomWeatherData() []models.WeatherData {
 
 // @Summary Sample weatherforecast
 // @Description Sample random weatherforecast data
-// @Tags weather
+// @Tags sampleweatherdata
 // @Accept */*
 // @Produce plain
 // @Success 200 "OK"

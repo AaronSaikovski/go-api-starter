@@ -22,7 +22,7 @@ release: vet lint seccheck
 .PHONY: docs
 ## docs - updates the swagger docs
 docs:	
-	swag init --dir ./../handlers
+	swag init
 
 
 .PHONY: build

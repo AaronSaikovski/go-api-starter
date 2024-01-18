@@ -53,9 +53,14 @@ func SetupAndRunApp() error {
 	//Add compression
 	middleware.AddCompression(app)
 
-	// get the port and start
+	// get the server port
 	port := os.Getenv("PORT")
-	app.Logger.Fatal(app.Start(":" + port))
+
+	// Start the server
+	err := app.Start(":" + port)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

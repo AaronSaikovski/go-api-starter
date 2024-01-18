@@ -77,13 +77,13 @@ hotload       - Uses the Air server for hot reloading support.
 Uses a basic Ping/Pong approach for healthchecks.
 Uses the endpoint:
 ```
-http://127.0.0.1:8080/api/ping
+http://127.0.0.1:8080/api/health
 ```
 
 Returns:
 
 ```
-pong -
+OK
 HTTP Status code - 200 OK:
 ```
 
