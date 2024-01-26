@@ -14,6 +14,7 @@ WORKDIR /root/
 COPY --from=build /app/server .
 COPY --from=build /app/.env .
 
+USER 65534
 
 # set executable
 CMD ["./server"]

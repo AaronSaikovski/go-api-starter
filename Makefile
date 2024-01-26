@@ -15,6 +15,7 @@ help:
 .PHONY: release
 ## release - Builds the project in preparation for (local)release
 release: vet lint seccheck
+	go clean -cache
 	go build $(GOFLAGS) -o bin/${TARGET} ${MAINAPPPATH}
 	file bin/${TARGET}
 
@@ -28,6 +29,7 @@ docs:
 .PHONY: build
 ## build - Builds the project in preparation for debug
 build:
+	go clean -cache
 	go build -o bin/${TARGET} ${MAINAPPPATH}
 	file bin/${TARGET}
 
@@ -41,6 +43,7 @@ run:
 .PHONY: clean
 ## clean - Remove the old builds and any debug information
 clean:
+	go clean -cache
 	go clean
 	rm -rf dist
 	rm bin/${TARGET}
