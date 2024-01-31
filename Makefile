@@ -84,6 +84,7 @@ seccheck:
 lint:
 	go fmt ./...
 	go mod tidy -v
+	golangci-lint run ./... api config handlers middleware models router
 
 
 .PHONY: watch
