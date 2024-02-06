@@ -1,4 +1,4 @@
-package api
+package logging
 
 import (
 	"flag"
@@ -9,7 +9,7 @@ import (
 )
 
 // Setup Zerolog logging from the .env file
-func setupLogging() error {
+func SetupLogging() error {
 	//get debug flag
 	debug_flag, err := strconv.ParseBool(os.Getenv("DEBUG"))
 	if err != nil {

@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/AaronSaikovski/go-api-starter/config"
+	"github.com/AaronSaikovski/go-api-starter/logging"
 	"github.com/AaronSaikovski/go-api-starter/middleware"
 	"github.com/AaronSaikovski/go-api-starter/router"
 
@@ -21,7 +22,7 @@ func SetupAndRunApp() error {
 	}
 
 	//setup logging
-	errLog := setupLogging()
+	errLog := logging.SetupLogging()
 	if errLog != nil {
 		return errLog
 	}
