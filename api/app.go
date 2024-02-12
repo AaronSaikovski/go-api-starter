@@ -49,10 +49,10 @@ func SetupAndRunApp() error {
 	router.SetupRoutes(app)
 
 	//Add a rate limiter
-	middleware.RateLimiter(app)
+	//middleware.RateLimiter(app)
 
 	//Add compression
-	middleware.AddCompression(app)
+	//middleware.AddCompression(app)
 
 	// get the server port
 	port := os.Getenv("PORT")

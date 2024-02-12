@@ -20,4 +20,3 @@ func main() {
 		panic(err)
 	}
 }
-
