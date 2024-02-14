@@ -1,12 +1,12 @@
 package handlers
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 	"time"
 
 	"github.com/AaronSaikovski/go-api-starter/models"
-	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
 )
 
@@ -83,7 +83,7 @@ func generateRandomWeatherData() []models.WeatherData {
 // @Produce plain
 // @Success 200 "OK"
 // @Router /api/weatherforecast [get]
-func HandleWeatherGet(c echo.Context) error {
+func HandleWeatherGet(w http.ResponseWriter, r *http.Request) {
 
 	log.Debug().Msg("Calling HandleWeatherGet()")
 
@@ -91,6 +91,6 @@ func HandleWeatherGet(c echo.Context) error {
 	WeatherData := generateRandomWeatherData()
 
 	// return the weather data json
-	return c.JSON(http.StatusOK, WeatherData)
+	fmt.Fprint(w, WeatherData)
 
 }

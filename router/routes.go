@@ -1,12 +1,12 @@
 package router
 
 import (
+	"net/http"
 	"github.com/AaronSaikovski/go-api-starter/handlers"
-	"github.com/labstack/echo/v4"
 )
 
 // Setup up API routes
-func SetupRoutes(app *echo.Echo) {
-	app.GET("/api/health", handlers.HandleHealthCheck)
-	app.GET("/api/weatherforecast", handlers.HandleWeatherGet)
+func SetupRoutes(app *http.ServeMux) {
+	app.HandleFunc("GET /api/health", handlers.HandleHealthCheck)
+	app.HandleFunc("GET /api/weatherforecast", handlers.HandleWeatherGet)
 }

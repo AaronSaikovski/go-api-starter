@@ -1,9 +1,8 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
-
-	"github.com/labstack/echo/v4"
 )
 
 // @Summary Show the health status of the API.
@@ -13,6 +12,7 @@ import (
 // @Produce plain
 // @Success 200 "OK"
 // @Router /api/health [get]
-func HandleHealthCheck(c echo.Context) error {
-	return c.String(http.StatusOK, "OK")
+func HandleHealthCheck(w http.ResponseWriter, r *http.Request) {
+	responseMsg := fmt.Sprintf("Status:OK - %d", http.StatusOK)
+	fmt.Fprint(w, responseMsg)
 }
