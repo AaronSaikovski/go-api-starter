@@ -9,6 +9,19 @@ info:
   title: go-api-starter
   version: 0.3.1
 paths:
+  /api/health:
+    get:
+      consumes:
+      - '*/*'
+      description: get the status of server.
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+      summary: Show the health status of the API.
+      tags:
+      - healthcheck
   /api/weatherforecast:
     get:
       consumes:

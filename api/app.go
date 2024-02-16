@@ -1,16 +1,20 @@
+/*
+Package go-api-starter
+using the echo web framework
+*/
+
 package api
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/AaronSaikovski/go-api-starter/config"
 	"github.com/AaronSaikovski/go-api-starter/logging"
+	"github.com/AaronSaikovski/go-api-starter/middleware"
 	"github.com/AaronSaikovski/go-api-starter/router"
 
+	"github.com/labstack/echo/v4"
 	"github.com/rs/zerolog/log"
-
-	"net/http"
 )
 
 // MAIN - Setup and run
@@ -29,26 +33,25 @@ func SetupAndRunApp() error {
 	}
 
 	log.Debug().Msg("calling SetupAndRunApp()")
-	mux := http.NewServeMux()
 
 	// create Echo app -
-	//app := echo.New()
+	app := echo.New()
 
 	// Uses API key header - 'XApiKey'
 	//middleware.AddApiKeyAuth(app)
 
 	// attach swagger
-	//config.AddSwaggerRoutes(mux)
+	config.AddSwaggerRoutes(app)
 
 	// attach middleware
-	//middleware.Recover(mux)
-	//middleware.Logger(mux)
+	middleware.Recover(app)
+	middleware.Logger(app)
 
 	//Use CORS - change AllowOrigins to suit
-	//middleware.AddCors(mux)
+	middleware.AddCors(app)
 
 	// setup routes
-	router.SetupRoutes(mux)
+	router.SetupRoutes(app)
 
 	//Add a rate limiter
 	//middleware.RateLimiter(app)
@@ -59,13 +62,8 @@ func SetupAndRunApp() error {
 	// get the server port
 	port := os.Getenv("PORT")
 
-	fmt.Println("Starting http server....")
-	fmt.Printf("⇨ http server started on %s\n", ":"+port)
-
 	// Start the server
-	err := http.ListenAndServe(":"+port, mux)
-
-	//err := app.Start(":" + port)
+	err := app.Start(":" + port)
 	if err != nil {
 		return err
 	}

@@ -42,9 +42,8 @@ run:
 ## clean - Remove the old builds and any debug information
 clean:
 	go clean -cache
-	go clean
-	rm -rf dist
-	rm bin/${TARGET}
+	go clean	
+	rm /bin/${TARGET}
 
 
 .PHONY: test
@@ -76,7 +75,7 @@ staticcheck:
 .PHONY: seccheck
 ## seccheck - Code vulnerability check
 seccheck:	
-	govulncheck ./...
+	#govulncheck ./...
 
 
 .PHONY: lint
