@@ -60,6 +60,7 @@ func SetupAndRunApp() error {
 	port := os.Getenv("PORT")
 
 	fmt.Println("Starting http server....")
+	fmt.Printf("⇨ http server started on %s\n", ":"+port)
 
 	// Start the server
 	err := http.ListenAndServe(":"+port, mux)

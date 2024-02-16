@@ -1,8 +1,8 @@
 package router
 
 import (
-	"net/http"
 	"github.com/AaronSaikovski/go-api-starter/handlers"
+	"net/http"
 )
 
 // Setup up API routes
