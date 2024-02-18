@@ -27,7 +27,7 @@ docs:
 
 .PHONY: build
 ## build - Builds the project in preparation for debug
-build: clean
+build: #clean
 	go build -o bin/${TARGET} ${MAINAPPPATH}
 	file bin/${TARGET}
 
@@ -43,7 +43,7 @@ run:
 clean:
 	go clean -cache
 	go clean	
-	rm /bin/${TARGET}
+	rm ./bin/${TARGET}
 
 
 .PHONY: test
