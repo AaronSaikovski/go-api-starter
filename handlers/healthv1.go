@@ -13,6 +13,6 @@ import (
 // @Produce plain
 // @Success 200 "OK"
 // @Router /api/health [get]
-func HandleHealthCheck(c echo.Context) error {
-	return c.String(http.StatusOK, "OK")
+func HandleHealthCheckV1(c echo.Context) error {
+	return c.String(http.StatusOK, "OK - V1")
 }

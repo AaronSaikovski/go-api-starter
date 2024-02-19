@@ -8,5 +8,5 @@ import (
 // Setup up API routes
 func SetupRoutes(app *echo.Echo) {
 	app.GET("/api/health", handlers.HandleHealthCheck)
-	app.GET("/api/weatherforecast", handlers.HandleWeatherGet)
+	app.GET("/api/weatherforecast", handlers.HandleWeather)
 }

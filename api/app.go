@@ -37,6 +37,10 @@ func SetupAndRunApp() error {
 	// create Echo app -
 	app := echo.New()
 
+	//API versioning
+	//v1 := app.Group("/v1")
+	//router.SetupV1Routes(v1)
+
 	// Uses API key header - 'XApiKey'
 	//middleware.AddApiKeyAuth(app)
 
