@@ -1,0 +1,115 @@
+# MIT License
+
+# # Copyright (c) 2024 Aaron Saikovski
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# using - https://taskfile.dev/
+
+version: '3'
+
+#ENV VARS
+env:
+  TARGET: go-api-starter #Change this to suit
+  APPPATH: ./main.go #Change this to suit
+
+tasks:
+
+  ## version - get the Go version
+  version:
+    cmds:
+      - go version
+
+
+  ## release - Builds the project in preparation for (local)release
+  release:
+    deps: [vet,lint, seccheck]
+    cmds:
+      - go generate $APPPATH
+      - go build -ldflags="-s -w" -o bin/{TARGET $APPPATH
+      - file bin/$TARGET
+
+  ## goreleaser - Builds the project in preparation for release
+  goreleaser:
+    cmds:
+      - goreleaser release --snapshot --clean 
+
+  ## build - Builds the project in preparation for debug
+  build:
+    cmds:
+      - go build -o bin/$TARGET $APPPATH
+      - file bin/$TARGET
+
+  ## run - builds and runs the program on the target platform
+  run:
+    cmds:
+      - go run $APPPATH
+
+  ## watch - use air server for hot reloading
+  watch:
+    cmds:
+      - air
+
+  ## docs - updates the swagger docs
+  docs:
+    cmds:
+      - swag init
+
+
+  ## clean - Remove the old builds and any debug information
+  clean:
+    cmds:
+      - go clean -cache
+      - go clean
+      - rm -rf dist
+      - rm bin/$TARGET
+
+  ## test - executes unit tests
+  test:
+    cmds:
+      - go test -v ./test/...
+
+  ## deps - fetches any external dependencies and updates
+  deps:
+    cmds:
+      - go mod tidy
+      - go mod download
+      - go get -u ./...
+
+  ## vet - Vet examines Go source code and reports suspicious constructs
+  vet:
+    cmds:
+      - go vet ./...
+
+  ## staticcheck - Runs static code analyzer staticcheck - currently broken 
+  staticcheck:
+    cmds:
+      - staticcheck ./...
+
+    ## seccheck - Code vulnerability check
+  seccheck:
+    cmds:
+      - govulncheck ./...
+
+## lint - format code and tidy modules
+  lint:
+    cmds:
+      - go fmt ./...
+      - go mod tidy -v
+      - golangci-lint run ./...
