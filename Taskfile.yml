@@ -42,7 +42,7 @@ tasks:
     deps: [vet,lint, seccheck]
     cmds:
       - go generate $APPPATH
-      - go build -ldflags="-s -w" -o bin/{TARGET $APPPATH
+      - go build -ldflags="-s -w" -o bin/$TARGET $APPPATH
       - file bin/$TARGET
 
   ## goreleaser - Builds the project in preparation for release
