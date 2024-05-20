@@ -22,7 +22,7 @@
 
 # using - https://taskfile.dev/
 
-version: '3'
+version: "3"
 
 #ENV VARS
 env:
@@ -30,16 +30,14 @@ env:
   APPPATH: ./main.go #Change this to suit
 
 tasks:
-
   ## version - get the Go version
   version:
     cmds:
       - go version
 
-
   ## release - Builds the project in preparation for (local)release
   release:
-    deps: [vet,lint, seccheck]
+    deps: [vet, lint, seccheck]
     cmds:
       - go generate $APPPATH
       - go build -ldflags="-s -w" -o bin/$TARGET $APPPATH
@@ -48,7 +46,7 @@ tasks:
   ## goreleaser - Builds the project in preparation for release
   goreleaser:
     cmds:
-      - goreleaser release --snapshot --clean 
+      - goreleaser release --snapshot --clean
 
   ## build - Builds the project in preparation for debug
   build:
@@ -70,7 +68,6 @@ tasks:
   docs:
     cmds:
       - swag init
-
 
   ## clean - Remove the old builds and any debug information
   clean:
@@ -97,7 +94,7 @@ tasks:
     cmds:
       - go vet ./...
 
-  ## staticcheck - Runs static code analyzer staticcheck - currently broken 
+  ## staticcheck - Runs static code analyzer staticcheck - currently broken
   staticcheck:
     cmds:
       - staticcheck ./...
@@ -107,9 +104,14 @@ tasks:
     cmds:
       - govulncheck ./...
 
-## lint - format code and tidy modules
+  ## lint - format code and tidy modules
   lint:
     cmds:
       - go fmt ./...
       - go mod tidy -v
       - golangci-lint run ./...
+
+  ## generate - update build version
+  generate:
+    cmds:
+      - go generate $APPPATH
