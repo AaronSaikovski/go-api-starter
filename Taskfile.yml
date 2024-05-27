@@ -50,6 +50,7 @@ tasks:
 
   ## build - Builds the project in preparation for debug
   build:
+    deps: [clean]
     cmds:
       - go build -o bin/$TARGET $APPPATH
       - file bin/$TARGET
